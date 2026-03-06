@@ -14,7 +14,7 @@ theme: cosmo
 ### Column {width=60%}
 
 ::: {.card title="About This Analysis"}
-For this assignment I looked at the song **"Op de block"** by Kevin and Emms. I used a chromagram and two self-similarity matrices to see how the song is structured and which notes dominate the track.
+For this assignment I looked at the song **"Op de block"** by Kevin and Emms. Using R, I built a chromagram and two self-similarity matrices to see how the song is structured and which notes dominate the track.
 
 The main things I found:
 
@@ -30,9 +30,9 @@ The main things I found:
 
 | Step | Tool |
 |------|------|
-| Audio analysis | Python / Librosa |
-| Pitch features | Librosa CQT |
-| Self-similarity | Librosa |
+| Audio analysis | R |
+| Pitch features | RStudio |
+| Self-similarity | R |
 | Plots | R / ggplot2 |
 | Dashboard | Quarto |
 
