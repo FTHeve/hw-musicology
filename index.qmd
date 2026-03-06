@@ -1,64 +1,103 @@
 ---
-title: "Audio Structure Analysis: 'Op de block' by Kevin & Emms"
-format: 
-  dashboard: {}
-theme: litera
+title: "Audio Structure Analysis — 'Op de block' by Kevin & Emms"
+format:
+  dashboard:
+    css: custom.css
+    scrolling: true
+theme: cosmo
 ---
 
-# Project Overview
+# Overview
 
-## Row {height=100%}
+## Row
 
 ### Column {width=60%}
 
-#### About This Project
-I analyzed the chromagram data from "Op de block" by Kevin and Emms to understand the song's structure. Since it's a hip-hop track, the repeating instrumental loop is clearly visible in the graphs below.
+::: {.card title="About This Analysis"}
+For this assignment I looked at the song **"Op de block"** by Kevin and Emms. I used a chromagram and two self-similarity matrices to see how the song is structured and which notes dominate the track.
+
+The main things I found:
+
+- The song is mostly built on a **D Major** chord (D, F# and A)
+- The beat loops almost constantly throughout the whole song
+- You can clearly see where the song changes sections in the Manhattan SSM
+- The waveform clips in the louder parts, which is common in hip-hop due to heavy compression
+:::
 
 ### Column {width=40%}
 
-#### Tools Used
-* **Python / Librosa:** For audio feature extraction.
-* **Quarto:** For generating this interactive dashboard.
-* **GitHub Pages:** For deployment and hosting.
+::: {.card title="Tools used"}
 
+| Step | Tool |
+|------|------|
+| Audio analysis | Python / Librosa |
+| Pitch features | Librosa CQT |
+| Self-similarity | Librosa |
+| Plots | R / ggplot2 |
+| Dashboard | Quarto |
+
+**Sample rate:** 44 100 Hz · **Frame size:** 0.1 s · **Chroma bins:** 12
+:::
 
 # Harmonic Analysis
 
-## Row {height=60%}
+## Row {height=62%}
 
-### Column {width=100%}
+::: {.card title="Chromagram"}
+![](graph3.png)
+:::
 
-#### Chromagram: Pitch Features Over Time
-![Chromagram](graph3.png)
+## Row {height=38%}
 
-## Row {height=40%}
+### Column {width=50%}
 
-### Column {width=100%}
+::: {.card title="Reading the chromagram"}
+The chromagram shows how much energy each of the 12 pitch classes has at every point in the song. Brighter means more energy.
 
-#### Key and Chord Analysis
-This graph shows which notes are playing throughout the song. The beat stays mostly the same, so you can see strong horizontal lines showing the main loop repeating. When the lines fade or change, it indicates a break or shift in the song structure.
+You can see that **D, F# and A** stay bright for almost the entire song — those are the notes of the D Major chord that the beat is based on. The brightness drops near the end when the track fades out.
+:::
 
-**Chord Analysis:**
-The graph shows high energy consistently on **D, F#, and A**, indicating the track is in **D Major**. The repeating vertical bands show simultaneous energy across these pitches, confirming the chordal accompaniment.
+### Column {width=50%}
 
+::: {.card title="Key and chords"}
+
+| Pitch | Energy | Role in chord |
+|-------|--------|---------------|
+| **D** | Very high | Root |
+| **F#** | High | Major third |
+| **A** | High | Fifth |
+| C# | Low | Extra colour |
+| G# / A# | Very low | Rare |
+
+Based on this, the song is in **D Major**.
+:::
 
 # Structural Analysis
 
-## Row {height=70%}
+## Row {height=62%}
 
 ### Column {width=50%}
-#### Self-Similarity (Cosine Distance)
-![SSM Cosine](graph2.png)
+
+::: {.card title="Self-Similarity Matrix — Cosine"}
+![](graph2.png)
+:::
 
 ### Column {width=50%}
-#### Self-Similarity (Manhattan Distance)
-![SSM Manhattan](graph1.png)
 
-## Row {height=30%}
+::: {.card title="Self-Similarity Matrix — Manhattan"}
+![](graph1.png)
+:::
 
-### Column {width=100%}
+## Row {height=38%}
 
-#### Form and Structure
-**Cosine Distance:** This compares the song to itself to show repeating patterns. The diagonal lines next to the center line show the beat is a constant loop. Each time the chord progression repeats, a new diagonal appears, showing the background music stays the same throughout verses and choruses.
+### Column {width=50%}
 
-**Manhattan Distance:** Using a different calculation and color scheme, this graph highlights structural changes rather than just repeating chords. The checkerboard-like blocks show where major changes happen—instruments dropping in and out, and vocal switches between Kevin and Emms. The darker blocks mark section transitions like verse to hook or bridge.
+::: {.card title="Cosine SSM"}
+This matrix compares each moment of the song to every other moment based on which pitches are active. The parallel diagonal lines show that the same chord pattern keeps repeating on a short cycle. This is consistent throughout verses and the chorus — the harmony basically never changes, only the vocals do.
+:::
+
+### Column {width=50%}
+
+::: {.card title="Manhattan SSM"}
+This version is more sensitive to changes in texture and timbre. The clear block pattern shows the larger sections of the song. You can see exactly where the song shifts — like going from a verse into the hook — because the blocks have sharp edges. Even though the chords stay the same, the overall sound changes enough to show up here.
+:::
