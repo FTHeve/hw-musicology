@@ -1,0 +1,64 @@
+---
+title: "Audio Structure Analysis: 'Op de block' by Kevin & Emms"
+format: 
+  dashboard: {}
+theme: litera
+---
+
+# Project Overview
+
+## Row {height=100%}
+
+### Column {width=60%}
+
+#### About This Project
+I analyzed the chromagram data from "Op de block" by Kevin and Emms to understand the song's structure. Since it's a hip-hop track, the repeating instrumental loop is clearly visible in the graphs below.
+
+### Column {width=40%}
+
+#### Tools Used
+* **Python / Librosa:** For audio feature extraction.
+* **Quarto:** For generating this interactive dashboard.
+* **GitHub Pages:** For deployment and hosting.
+
+
+# Harmonic Analysis
+
+## Row {height=60%}
+
+### Column {width=100%}
+
+#### Chromagram: Pitch Features Over Time
+![Chromagram](graph3.png)
+
+## Row {height=40%}
+
+### Column {width=100%}
+
+#### Key and Chord Analysis
+This graph shows which notes are playing throughout the song. The beat stays mostly the same, so you can see strong horizontal lines showing the main loop repeating. When the lines fade or change, it indicates a break or shift in the song structure.
+
+**Chord Analysis:**
+The graph shows high energy consistently on **D, F#, and A**, indicating the track is in **D Major**. The repeating vertical bands show simultaneous energy across these pitches, confirming the chordal accompaniment.
+
+
+# Structural Analysis
+
+## Row {height=70%}
+
+### Column {width=50%}
+#### Self-Similarity (Cosine Distance)
+![SSM Cosine](graph2.png)
+
+### Column {width=50%}
+#### Self-Similarity (Manhattan Distance)
+![SSM Manhattan](graph1.png)
+
+## Row {height=30%}
+
+### Column {width=100%}
+
+#### Form and Structure
+**Cosine Distance:** This compares the song to itself to show repeating patterns. The diagonal lines next to the center line show the beat is a constant loop. Each time the chord progression repeats, a new diagonal appears, showing the background music stays the same throughout verses and choruses.
+
+**Manhattan Distance:** Using a different calculation and color scheme, this graph highlights structural changes rather than just repeating chords. The checkerboard-like blocks show where major changes happen—instruments dropping in and out, and vocal switches between Kevin and Emms. The darker blocks mark section transitions like verse to hook or bridge.
