@@ -13,7 +13,7 @@ theme: cosmo
 
 ### Column {width=60%}
 
-::: {.card title="About This Analysis"}
+:::: {.card title="About This Analysis"}
 For this assignment I looked at the song **"Op de block"** by Kevin and Emms. Using R, I built a chromagram and two self-similarity matrices to see how the song is structured and which notes dominate the track.
 
 The main things I found:
@@ -22,11 +22,11 @@ The main things I found:
 - The beat loops almost constantly throughout the whole song
 - You can clearly see where the song changes sections in the Manhattan SSM
 - The waveform clips in the louder parts, which is common in hip-hop due to heavy compression
-:::
+::::
 
 ### Column {width=40%}
 
-::: {.card title="Tools used"}
+:::: {.card title="Tools used"}
 
 | Step | Tool |
 |------|------|
@@ -37,29 +37,29 @@ The main things I found:
 | Dashboard | Quarto |
 
 **Sample rate:** 44 100 Hz · **Frame size:** 0.1 s · **Chroma bins:** 12
-:::
+::::
 
 # Harmonic Analysis
 
 ## Row {height=62%}
 
-::: {.card title="Chromagram"}
+:::: {.card title="Chromagram"}
 ![](graph3.png)
-:::
+::::
 
 ## Row {height=38%}
 
 ### Column {width=50%}
 
-::: {.card title="Reading the chromagram"}
+:::: {.card title="Reading the chromagram"}
 The chromagram shows how much energy each of the 12 pitch classes has at every point in the song. Brighter means more energy.
 
 You can see that **D, F# and A** stay bright for almost the entire song — those are the notes of the D Major chord that the beat is based on. The brightness drops near the end when the track fades out.
-:::
+::::
 
 ### Column {width=50%}
 
-::: {.card title="Key and chords"}
+:::: {.card title="Key and chords"}
 
 | Pitch | Energy | Role in chord |
 |-------|--------|---------------|
@@ -70,7 +70,7 @@ You can see that **D, F# and A** stay bright for almost the entire song — thos
 | G# / A# | Very low | Rare |
 
 Based on this, the song is in **D Major**.
-:::
+::::
 
 # Structural Analysis
 
@@ -78,26 +78,45 @@ Based on this, the song is in **D Major**.
 
 ### Column {width=50%}
 
-::: {.card title="Self-Similarity Matrix — Cosine"}
+:::: {.card title="Self-Similarity Matrix — Cosine"}
 ![](graph2.png)
-:::
+::::
 
 ### Column {width=50%}
 
-::: {.card title="Self-Similarity Matrix — Manhattan"}
+:::: {.card title="Self-Similarity Matrix — Manhattan"}
 ![](graph1.png)
-:::
+::::
 
 ## Row {height=38%}
 
 ### Column {width=50%}
 
-::: {.card title="Cosine SSM"}
+:::: {.card title="Cosine SSM"}
 This matrix compares each moment of the song to every other moment based on which pitches are active. The parallel diagonal lines show that the same chord pattern keeps repeating on a short cycle. This is consistent throughout verses and the chorus — the harmony basically never changes, only the vocals do.
-:::
+::::
 
 ### Column {width=50%}
 
-::: {.card title="Manhattan SSM"}
+:::: {.card title="Manhattan SSM"}
 This version is more sensitive to changes in texture and timbre. The clear block pattern shows the larger sections of the song. You can see exactly where the song shifts — like going from a verse into the hook — because the blocks have sharp edges. Even though the chords stay the same, the overall sound changes enough to show up here.
-:::
+::::
+
+# Rhythm Analysis
+
+## Row {height=100%}
+
+### Column {width=65%}
+
+:::: {.card title="Tempogram"}
+![](tempogram.png)
+::::
+
+### Column {width=35%}
+
+:::: {.card title="Tempo and Rhythm Breakdown"}
+This tempogram visualizes the rhythmic foundation of "Op de block." Because the track is built on a looping hip-hop beat, the graph displays a strong, continuous horizontal band of energy at its primary tempo.
+
+Compared to the chromagram, which showed clear differences between verses and the hook when Kevin and Emms switch vocals, the tempo itself stays tightly anchored. This steady, nearly unchanging BPM gives the song the driving backbone typical of Dutch hip-hop, keeping the vocal lines in the same rhythmic pocket throughout almost the entire track.
+::::
+
