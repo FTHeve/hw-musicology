@@ -1,122 +1,112 @@
 ---
-title: "Audio Structure Analysis — 'Op de block' by Kevin & Emms"
-format:
+title: "Audio Structure Analysis: 'Op de block' by Kevin & Emms"
+author: "Mouad Kasmi"
+format: 
   dashboard:
-    css: custom.css
+    nav-buttons: [github]
+    github: https://github.com/FTHeve/hw-musicology
+    theme: darkly
     scrolling: true
-theme: cosmo
 ---
 
 # Overview
-
-## Row
-
-### Column {width=60%}
-
-:::: {.card title="About This Analysis"}
-For this assignment I looked at the song **"Op de block"** by Kevin and Emms. Using R, I built a chromagram and two self-similarity matrices to see how the song is structured and which notes dominate the track.
-
-The main things I found:
-
-- The song is mostly built on a **D Major** chord (D, F# and A)
-- The beat loops almost constantly throughout the whole song
-- You can clearly see where the song changes sections in the Manhattan SSM
-- The waveform clips in the louder parts, which is common in hip-hop due to heavy compression
-::::
-
-### Column {width=40%}
-
-:::: {.card title="Tools used"}
-
-| Step | Tool |
-|------|------|
-| Audio analysis | R |
-| Pitch features | RStudio |
-| Self-similarity | R |
-| Plots | R / ggplot2 |
-| Dashboard | Quarto |
-
-**Sample rate:** 44 100 Hz · **Frame size:** 0.1 s · **Chroma bins:** 12
-::::
-
-# Harmonic Analysis
-
-## Row {height=62%}
-
-:::: {.card title="Chromagram"}
-![](graph3.png)
-::::
-
-## Row {height=38%}
-
-### Column {width=50%}
-
-:::: {.card title="Reading the chromagram"}
-The chromagram shows how much energy each of the 12 pitch classes has at every point in the song. Brighter means more energy.
-
-You can see that **D, F# and A** stay bright for almost the entire song — those are the notes of the D Major chord that the beat is based on. The brightness drops near the end when the track fades out.
-::::
-
-### Column {width=50%}
-
-:::: {.card title="Key and chords"}
-
-| Pitch | Energy | Role in chord |
-|-------|--------|---------------|
-| **D** | Very high | Root |
-| **F#** | High | Major third |
-| **A** | High | Fifth |
-| C# | Low | Extra colour |
-| G# / A# | Very low | Rare |
-
-Based on this, the song is in **D Major**.
-::::
-
-# Structural Analysis
-
-## Row {height=62%}
-
-### Column {width=50%}
-
-:::: {.card title="Self-Similarity Matrix — Cosine"}
-![](graph2.png)
-::::
-
-### Column {width=50%}
-
-:::: {.card title="Self-Similarity Matrix — Manhattan"}
-![](graph1.png)
-::::
-
-## Row {height=38%}
-
-### Column {width=50%}
-
-:::: {.card title="Cosine SSM"}
-This matrix compares each moment of the song to every other moment based on which pitches are active. The parallel diagonal lines show that the same chord pattern keeps repeating on a short cycle. This is consistent throughout verses and the chorus — the harmony basically never changes, only the vocals do.
-::::
-
-### Column {width=50%}
-
-:::: {.card title="Manhattan SSM"}
-This version is more sensitive to changes in texture and timbre. The clear block pattern shows the larger sections of the song. You can see exactly where the song shifts — like going from a verse into the hook — because the blocks have sharp edges. Even though the chords stay the same, the overall sound changes enough to show up here.
-::::
-
-# Rhythm Analysis
 
 ## Row {height=100%}
 
 ### Column {width=65%}
 
-:::: {.card title="Tempogram"}
-![](tempogram.png)
-::::
+#### About This Project
+I worked on "Op de block" by Kevin and Emms for this assignment. Main question for me was whether the beat, harmony and rhythm actually change a lot or if most of the structure comes from the vocals and small arrangement tweaks.
+
+It is pretty typical hip-hop in that sense: the beat loops for long stretches. When the track still feels like it moves, that is mostly from switching between rappers/singers and little extras in the mix, not from rewriting the whole instrumental every section.
 
 ### Column {width=35%}
 
-:::: {.card title="Tempo and Rhythm Breakdown"}
-This tempogram visualizes the rhythmic foundation of "Op de block." Because the track is built on a looping hip-hop beat, the graph displays a strong, continuous horizontal band of energy at its primary tempo.
+::: {.card title="Tools used"}
 
-Compared to the chromagram, which showed clear differences between verses and the hook when Kevin and Emms switch vocals, the tempo itself stays tightly anchored. This steady, nearly unchanging BPM gives the song the driving backbone typical of Dutch hip-hop, keeping the vocal lines in the same rhythmic pocket throughout almost the entire track.
-::::
+| Step | Tool |
+|------|------|
+| Audio analysis | R / RStudio |
+| Data processing| R |
+| Plots | R / ggplot2 |
+| Dashboard | Quarto |
 
+:::
+
+# Harmonic Analysis
+
+## Row {height=60%}
+
+### Column
+
+#### Chromagram: Pitch Features Over Time
+![Chromagram](graph3.png)
+
+## Row {height=40%}
+
+### Column
+
+#### Key and Chords: How it Feels
+The chromagram basically stays stuck on D, F# and A, which fits a D major chord. So harmonically it is not busy.
+
+What stands out is more the rhythm of those hits than a long melodic line. They function a bit like a stab pattern in the beat. That gives a fixed harmonic frame while Kevin and Emms do their thing on top. I did not see big key changes; it is mostly the same loop coming back.
+
+
+# Structural Analysis
+
+## Row {height=60%}
+
+### Column
+
+#### Self-Similarity (Cosine Distance)
+![SSM Cosine](graph2.png)
+
+### Column
+
+#### Self-Similarity (Manhattan Distance)
+![SSM Manhattan](graph1.png)
+
+## Row {height=40%}
+
+### Column
+
+#### Building the Song
+Cosine and Manhattan self-similarity matrices both pick up repetition in the backing. The cosine one is more about the pitch/chroma pattern repeating, so you get those diagonal stripes when the same harmonic content returns.
+
+Manhattan is a bit sharper on texture changes. Even when the chords are basically the same, you can still see blocks where the overall sound shifts (for example verse vs hook) because of vocals and what is happening in the high frequencies. Underneath, the beat loop is still the same idea.
+
+
+# Rhythm Analysis
+
+## Row {height=60%}
+
+### Column
+
+#### Tempogram
+![Tempogram of Op de block](tempogram.png)
+
+## Row {height=40%}
+
+### Column
+
+#### Tempo (tempogram)
+The tempogram for this track is boring in a good way: one strong horizontal band, so the estimated BPM barely drifts. Loud sections do not mean a faster grid here.
+
+That matches what I expected from the instrumental loop. If the beat is quantized and stable, the tempogram should look locked. The interesting stuff in this song is mostly energy and arrangement, not tempo tricks.
+
+
+# Corpus Clustering
+
+## Row {height=100%}
+
+### Column {width=65%}
+
+#### Playlist Song Clusters (194 Tracks)
+![Song Clusters](dendrogram.png)
+
+### Column {width=35%}
+
+#### How the Songs Group Together
+I clustered a long class playlist (about 194 tracks) in R using a few Spotify audio features: danceability, energy, valence, acousticness, instrumentalness. Ward linkage on scaled Euclidean distance, then plotted the dendrogram.
+
+Short branches = tracks that score similar on those measures. Higher merges split bigger chunks of the playlist apart. Interpreting genre from that is not perfect (it is only five numbers per song), but you can at least see clumps of "similar vibe" instead of reading 200 titles one by one.
