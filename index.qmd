@@ -1,6 +1,5 @@
 ---
-title: "Audio Structure Analysis: 'Op de block' by Kevin & Emms"
-author: "Mouad Kasmi"
+title: "Final Portfolio: 'Op de block' by Kevin & Emms"
 format: 
   dashboard:
     nav-buttons: [github]
@@ -9,104 +8,115 @@ format:
     scrolling: true
 ---
 
-# Overview
+# Background & Contribution
+
+## Row {height=100%}
+
+### Column {width=50%}
+
+#### Why This Track?
+I chose the song "Op de block" by Kevin and Emms. I picked this track because Dutch hip-hop uses very repetitive beats. I wanted to see how the song stays interesting even when the background music does not change.
+
+How I created this: I used R and Quarto. I got track data from the Spotify API, and I pulled audio features using the compmus package.
+
+#### What Are Our Assumptions?
+To analyze this correctly, we must know the limits of our data and tools:
+
+**Corpus Selection:** Our class playlist is mostly modern Western pop and hip-hop. This biases our clustering tree graph. If we added traditional folk music, the graph would look very different.
+
+**Feature Computation:** Spotify uses hidden math to give scores for things like "Energy". We assume these scores are correct, but we cannot check the exact math ourselves.
+
+**Data Analysis:** Chromagrams group all notes with the same name together (like all 'C' notes), even if one is high and one is low. We might miss small melody details because we assume octaves do not matter here.
+
+### Column {width=50%}
+
+#### Contribution: What did we learn?
+This project shows that in hip-hop, rhythm and sound texture matter much more than changing chords.
+
+Pop music changes keys or chords to keep you listening. "Op de block" does not do that. It stays on one steady D Major chord. Instead, it creates energy by changing the volume, swapping the singers, and adding or taking away drum parts.
+
+#### Transfer of Learning: Who can use this?
+Music producers and DJs can use these methods in the real world. For example, a DJ could look at the Tempograms and Manhattan SSMs of two different songs. If the tempo and texture blocks match perfectly, the DJ knows those two songs will transition together smoothly in a club. It proves we can use data to make better musical choices.
+
+# Corpus & Track Features
 
 ## Row {height=100%}
 
 ### Column {width=65%}
 
-#### About This Project
-I worked on "Op de block" by Kevin and Emms for this assignment. Main question for me was whether the beat, harmony and rhythm actually change a lot or if most of the structure comes from the vocals and small arrangement tweaks.
-
-It is pretty typical hip-hop in that sense: the beat loops for long stretches. When the track still feels like it moves, that is mostly from switching between rappers/singers and little extras in the mix, not from rewriting the whole instrumental every section.
+#### Class Corpus Dendrogram (194 Tracks)
+![Song Clusters](dendrogram.png)
 
 ### Column {width=35%}
 
-::: {.card title="Tools used"}
+#### Track-Level Features
+This tree graph looks at almost 200 songs from our class. It groups them by how they sound using Spotify's track-level features (like energy and mood).
 
-| Step | Tool |
-|------|------|
-| Audio analysis | R / RStudio |
-| Data processing| R |
-| Plots | R / ggplot2 |
-| Dashboard | Quarto |
+#### Where is my track?
+"Op de block" is placed in the group with high danceability and high energy. It is far away from quiet, acoustic songs. This fits the hip-hop genre perfectly. The loud drums give it energy, and the steady tempo makes it danceable.
 
-:::
-
-# Harmonic Analysis
+# Pitch (Chroma)
 
 ## Row {height=60%}
 
 ### Column
 
-#### Chromagram: Pitch Features Over Time
+#### Chromagram: Pitch Energy
 ![Chromagram](graph3.png)
 
 ## Row {height=40%}
 
 ### Column
 
-#### Key and Chords: How it Feels
-The chromagram basically stays stuck on D, F# and A, which fits a D major chord. So harmonically it is not busy.
+#### Key and Harmony
+This graph shows which musical notes are the loudest. Brighter colors mean more energy.
 
-What stands out is more the rhythm of those hits than a long melodic line. They function a bit like a stab pattern in the beat. That gives a fixed harmonic frame while Kevin and Emms do their thing on top. I did not see big key changes; it is mostly the same loop coming back.
+You can see bright lines on D, F#, and A. These notes make a D Major chord. These bright lines stay there for the whole song. The chords just loop over and over. They act like a drum beat to support the vocals, instead of playing a moving melody.
 
-
-# Structural Analysis
+# Timbre & Structure
 
 ## Row {height=60%}
 
 ### Column
 
-#### Self-Similarity (Cosine Distance)
-![SSM Cosine](graph2.png)
+#### Timbre (Manhattan Matrix)
+![SSM Manhattan](graph1.png)
 
 ### Column
 
-#### Self-Similarity (Manhattan Distance)
-![SSM Manhattan](graph1.png)
+#### Harmony (Cosine Matrix)
+![SSM Cosine](graph2.png)
 
 ## Row {height=40%}
 
 ### Column
 
 #### Building the Song
-Cosine and Manhattan self-similarity matrices both pick up repetition in the backing. The cosine one is more about the pitch/chroma pattern repeating, so you get those diagonal stripes when the same harmonic content returns.
+These checkerboard graphs show the song's structure.
 
-Manhattan is a bit sharper on texture changes. Even when the chords are basically the same, you can still see blocks where the overall sound shifts (for example verse vs hook) because of vocals and what is happening in the high frequencies. Underneath, the beat loop is still the same idea.
+The Cosine Matrix (right) looks at harmony. It looks blurry because the D Major chord loops the whole time. The harmony never changes.
 
+The Manhattan Matrix (left) looks at Timbre (the texture of the sound). You can see clear dark blocks here. These blocks show exactly when the song changes parts—like when a new rapper starts or the beat drops. The chords stay the same, but the changes in sound texture build the song's structure.
 
-# Rhythm Analysis
+# Loudness & Rhythm
 
 ## Row {height=60%}
 
 ### Column
 
-#### Tempogram
-![Tempogram of Op de block](tempogram.png)
+#### Loudness (Volume)
+![Loudness](loudness.png)
+
+### Column
+
+#### Tempogram (Rhythm)
+![Tempogram](tempogram.png)
 
 ## Row {height=40%}
 
 ### Column
 
-#### Tempo (tempogram)
-The tempogram for this track is boring in a good way: one strong horizontal band, so the estimated BPM barely drifts. Loud sections do not mean a faster grid here.
+#### Volume and Metre
+**Loudness:** The line graph shows how loud the song is. It starts quiet, gets very loud and flat in the middle, and fades out. The flat top means heavy audio compression. Producers use this in hip-hop to make the beat sound very strong.
 
-That matches what I expected from the instrumental loop. If the beat is quantized and stable, the tempogram should look locked. The interesting stuff in this song is mostly energy and arrangement, not tempo tricks.
-
-
-# Corpus Clustering
-
-## Row {height=100%}
-
-### Column {width=65%}
-
-#### Playlist Song Clusters (194 Tracks)
-![Song Clusters](dendrogram.png)
-
-### Column {width=35%}
-
-#### How the Songs Group Together
-I clustered a long class playlist (about 194 tracks) in R using a few Spotify audio features: danceability, energy, valence, acousticness, instrumentalness. Ward linkage on scaled Euclidean distance, then plotted the dendrogram.
-
-Short branches = tracks that score similar on those measures. Higher merges split bigger chunks of the playlist apart. Interpreting genre from that is not perfect (it is only five numbers per song), but you can at least see clumps of "similar vibe" instead of reading 200 titles one by one.
+**Temporal Features (Rhythm):** The tempogram shows the heartbeat of the song. The bright, straight line means the speed (tempo) never changes. Even when the volume drops, the beat stays perfectly steady. This gives the rappers a very tight rhythm to rap over.
